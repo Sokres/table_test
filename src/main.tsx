@@ -7,30 +7,33 @@ import Login from './pages/Login/Login.tsx';
 import Error404 from './pages/Error404/Error404.tsx';
 import React from 'react';
 import Table from './pages/Table/Table.tsx';
-const router = createBrowserRouter([
-	{
-		path: '/',
-		element: (
-			<RecAuth>
-				<Layout />
-			</RecAuth>
-		),
-		children: [
-			{
-				path: '/',
-				element: <Table />,
-			},
-		],
-	},
-	{
-		path: '/login',
-		element: <Login />,
-	},
-	{
-		path: '*',
-		element: <Error404 />,
-	},
-]);
+const router = createBrowserRouter(
+	[
+		{
+			path: '/',
+			element: (
+				<RecAuth>
+					<Layout />
+				</RecAuth>
+			),
+			children: [
+				{
+					path: '/',
+					element: <Table />,
+				},
+			],
+		},
+		{
+			path: '/login',
+			element: <Login />,
+		},
+		{
+			path: '*',
+			element: <Error404 />,
+		},
+	],
+	{ basename: '/table_test' }
+);
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<RouterProvider router={router} />
